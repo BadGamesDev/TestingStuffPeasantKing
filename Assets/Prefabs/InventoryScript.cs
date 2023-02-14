@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections.Generic;
+using System;
+using UnityEngine;
 
 public class InventoryScript : MonoBehaviour
 {
@@ -35,14 +36,14 @@ public class InventoryScript : MonoBehaviour
         }
     }
 
-    public void AddMoney(int amount)
+    public int GetTotalValue()
     {
-        money += amount;
-    }
-
-    public void RemoveMoney(int amount)
-    {
-        money -= amount;
+        int totalValue = 0;
+        foreach (Item item in items)
+        {
+            totalValue += item.quantity * item.value;
+        }
+        return totalValue;
     }
 }
 

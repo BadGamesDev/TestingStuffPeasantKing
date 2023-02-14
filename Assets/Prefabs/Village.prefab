@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -8720200365703610612}
   m_Layer: 0
   m_Name: Village
-  m_TagString: Untagged
+  m_TagString: Village
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,8 +112,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51983d9d31f81834bb86ccb78f7902fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
+  inventory: {fileID: 2164196838181764106}
   traderPrefab: {fileID: 2182082398061425284, guid: 118d78d81b238804dbe40ed5ad4c3755, type: 3}
   homeCity: {fileID: 0}
+  lord: {fileID: 0}
+  population: 0
+  taxRate: 0
   wheatProduction: 0
   woodProduction: 0

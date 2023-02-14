@@ -2,19 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimeScript : MonoBehaviour
+public class TimeManager : MonoBehaviour
 {
+    public delegate void OnDayTick();
+    public static event OnDayTick dayTickSend;
+
     public delegate void OnMonthTick();
     public static event OnMonthTick monthTickSend;
+
+    public delegate void OnYearTick();
+    public static event OnYearTick yearTickSend;
 
     public int hour;
     public int day;
     public int month;
     public int year;
 
-    private int[] daysPerMonth;
+    private static readonly int[] daysPerMonth = new[] { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
-    private float timeMultiplier = 100f;
+    private float timeMultiplier;
 
     private float timeSinceTick;
 
@@ -25,7 +31,7 @@ public class TimeScript : MonoBehaviour
         month = 1;
         year = 1180;
 
-        daysPerMonth = new[] { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+        timeMultiplier = 100;
     }
 
     private void Update()
@@ -65,6 +71,8 @@ public class TimeScript : MonoBehaviour
         {
             monthTick();
         }
+
+        dayTickSend?.Invoke();
     }
 
     public void monthTick()
@@ -77,15 +85,14 @@ public class TimeScript : MonoBehaviour
             yearTick();
         }
 
-        if (monthTickSend != null)
-        {
-            monthTickSend();
-        }
+        monthTickSend?.Invoke();
     }
 
     public void yearTick()
     {
         month = 1;
         year += 1;
+
+        yearTickSend?.Invoke();
     }
 }

@@ -3,12 +3,35 @@ using UnityEngine;
 
 public class TraderScript : MonoBehaviour
 {
-    public Vector3 home;
+    public InventoryScript inventory;
+    public GameObject homeVillage;
     public Vector3 destination;
-    public int money;
+
+    public int goodsValue;
+
+    private bool goingHome;
 
     private void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, destination, Time.deltaTime);
+        if (goingHome)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, homeVillage.transform.position, Time.deltaTime);
+            if (transform.position == homeVillage.transform.position)
+            {
+                homeVillage.GetComponent<InventoryScript>().money += inventory.money;
+                Destroy(gameObject);
+            }
+        }
+        
+        else
+        {
+            transform.position = Vector3.MoveTowards(transform.position, destination, Time.deltaTime);
+            if (transform.position == destination)
+            {
+                inventory.money += inventory.GetTotalValue();
+                inventory.items.Clear();
+                goingHome = true;
+            }
+        }
     }
 }
