@@ -4,12 +4,15 @@ using UnityEngine;
 public class VillageScript : MonoBehaviour
 {
     public InventoryScript inventory;
+    
     public GameObject traderPrefab;
     public GameObject homeCity;
-    public GameObject lord;
+    public GameObject liege;
+    
 
     public int population;
     public int taxRate;
+    public int debt;
 
     public int wheatProduction;
     public int woodProduction;
@@ -31,7 +34,8 @@ public class VillageScript : MonoBehaviour
 
     private void OnDayTick()
     {
-        consumeFood();
+        //Make this monthly if there are performance problems
+        ConsumeFood();
     }
 
     private void OnMonthTick()
@@ -47,7 +51,7 @@ public class VillageScript : MonoBehaviour
     
     private void OnYearTick()
     {
-        payTaxes();
+        PayTaxes();
     }
 
     public void SendTrader()
@@ -63,9 +67,12 @@ public class VillageScript : MonoBehaviour
             {
                 if (item.name == "Wheat")
                 {
-                    int quantity = Random.Range(0, item.quantity - population * 60);
-                    traderScript.inventory.AddItem(new Item { name = item.name, quantity = quantity, value = item.value });
-                    inventory.RemoveItem(new Item { name = item.name, quantity = quantity, value = item.value });
+                    int quantity = Mathf.Max(0, Random.Range(0, item.quantity - population * 60));
+                    if (quantity > 0)
+                    {
+                        traderScript.inventory.AddItem(new Item { name = item.name, quantity = quantity, value = item.value });
+                        inventory.RemoveItem(new Item { name = item.name, quantity = quantity, value = item.value });
+                    }
                 }
                 else
                 {
@@ -77,22 +84,26 @@ public class VillageScript : MonoBehaviour
         }
     }
     
-    public void consumeFood()
+    public void ConsumeFood()
     {
         inventory.RemoveItem(new Item { name = "Wheat", quantity = population, value = 10 });
     }
     
-    public void payTaxes()
+    public void PayTaxes()
     {
-        if (inventory.money >= population * taxRate)
+        int taxOwed = population * taxRate + debt;
+
+        if (inventory.money >= taxOwed)
         {
-            inventory.money -= population * taxRate;
-            lord.GetComponent<InventoryScript>().money += population * taxRate;
+            inventory.money -= taxOwed;
+            liege.GetComponent<InventoryScript>().money += taxOwed;
+            debt = 0;
         }
         else
         {
-            inventory.money -= inventory.money;
-            lord.GetComponent<InventoryScript>().money += inventory.money;
+            debt += taxOwed - inventory.money;
+            liege.GetComponent<InventoryScript>().money += inventory.money;
+            inventory.money = 0;
         }
     }
 }

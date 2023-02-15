@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 4948069325380052761}
   - component: {fileID: 4948069325380052762}
   - component: {fileID: -1898997099441874344}
+  - component: {fileID: -3445638995261587878}
   m_Layer: 0
   m_Name: City
-  m_TagString: Untagged
+  m_TagString: City
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,3 +100,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items: []
   money: 0
+--- !u!114 &-3445638995261587878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4948069325380052763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c5e55060a1aa83499d6a33d73061c66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: -1898997099441874344}
+  liege: {fileID: 0}
