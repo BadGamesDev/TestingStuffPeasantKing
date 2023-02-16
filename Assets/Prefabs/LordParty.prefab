@@ -463,8 +463,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 8380614619613488283}
   party: {fileID: -7059466285330406321}
+  desiredPartySize: 0
   nameText: {fileID: 5344711441079677421}
-  partySizeText: {fileID: 8936104273397650045}
   villages: []
   cities: []
   lordName: 
@@ -486,6 +486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lordScript: {fileID: 8380614619613488280}
+  partyScript: {fileID: -7059466285330406321}
   seat: {fileID: 0}
   patrolRadius: 10
   moveSpeed: 2
@@ -501,6 +502,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e2b4c3ccf15ccf4db77bad49b681ca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  party: []
+  partySizeText: {fileID: 8936104273397650045}
   partySize: 0
   partySpeed: 0
 --- !u!50 &6295237132159011886

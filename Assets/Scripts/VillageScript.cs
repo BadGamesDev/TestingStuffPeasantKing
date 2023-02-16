@@ -63,8 +63,8 @@ public class VillageScript : MonoBehaviour
         traderScript.destination = homeCity.transform.position;
 
         lock (inventory)
-        {
-            List<Item> itemsCopy = new List<Item>(inventory.items);
+        { //APPARENTLY THIS SHIT FIXES BUGS, IS THE LOCK STILL NEEDED? WHO KNOWS!
+            List<Item> itemsToRemove = new List<Item>();
 
             foreach (Item item in inventory.items)
             {
@@ -76,20 +76,25 @@ public class VillageScript : MonoBehaviour
                         if (quantity > 0)
                         {
                             traderScript.inventory.AddItem(new Item { name = item.name, quantity = quantity, value = item.value });
-                            inventory.RemoveItem(new Item { name = item.name, quantity = quantity, value = item.value });
+                            itemsToRemove.Add(new Item { name = item.name, quantity = quantity, value = item.value });
                         }
                     }
                     else
                     {
                         int quantity = Random.Range(item.quantity / 2, item.quantity + 1);
                         traderScript.inventory.AddItem(new Item { name = item.name, quantity = quantity, value = item.value });
-                        inventory.RemoveItem(new Item { name = item.name, quantity = quantity, value = item.value });
+                        itemsToRemove.Add(new Item { name = item.name, quantity = quantity, value = item.value });
                     }
                 }
             }
+
+            foreach (Item itemToRemove in itemsToRemove)
+            {
+                inventory.RemoveItem(itemToRemove);
+            }
         }
     }
-    
+
     public void ConsumeFood()
     {
         lock (inventory)

@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PartyScript : MonoBehaviour
 {
     public List<Pawn> party;
+    public TMP_Text partySizeText;
 
     public int partySize;
     public int partySpeed;
@@ -30,6 +32,7 @@ public class PartyScript : MonoBehaviour
         newSoldier.talent = Random.Range(2, 7);
         party.Add(newSoldier);
         partySize++;
+        partySizeText.text = partySize.ToString();
     }
 }
 

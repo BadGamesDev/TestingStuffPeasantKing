@@ -3,6 +3,7 @@ using UnityEngine;
 public class LordBehaviour : MonoBehaviour
 {
     public LordScript lordScript;
+    public PartyScript partyScript;
     public GameObject seat;
     public float patrolRadius = 10f;
     public float moveSpeed = 2f;
@@ -16,12 +17,19 @@ public class LordBehaviour : MonoBehaviour
 
     void Update()
     {
-        if (Vector3.Distance(transform.position, target) < 0.1f)
+        if (lordScript.desiredPartySize <= partyScript.partySize) //RANDOM PATROL
         {
-            target = GetRandomPosition();
-        }
+            if (Vector3.Distance(transform.position, target) < 0.1f)
+            {
+                target = GetRandomPosition();
+            }
 
-        transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
+        }
+        else //GO TO RECRUIT PAWNS
+        {
+            partyScript.AddPawn();
+        }
     }
 
     Vector3 GetRandomPosition()
