@@ -4,7 +4,9 @@ using UnityEngine;
 public class TraderScript : MonoBehaviour
 {
     public InventoryScript inventory;
+    
     public GameObject homeVillage;
+    
     public Vector3 destination;
 
     public int goodsValue;

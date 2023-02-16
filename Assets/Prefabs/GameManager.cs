@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set; }
+
     public List<GameObject> villages = new List<GameObject>();
     public List<GameObject> cities = new List<GameObject>();
-
 
     public GameObject lord0;
     public GameObject lord1;
@@ -26,9 +27,22 @@ public class GameManager : MonoBehaviour
     public LordScript lord6Script;
     public LordScript lord7Script;
 
+    public int pawnID;
 
     void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Debug.LogWarning("Duplicate GameManager detected, destroying the new instance.");
+            Destroy(gameObject);
+        }
+
+        pawnID = 0;
+
         GameObject[] villageObjects = GameObject.FindGameObjectsWithTag("Village");
         GameObject[] cityObjects = GameObject.FindGameObjectsWithTag("City");
 
@@ -88,25 +102,45 @@ public class GameManager : MonoBehaviour
         }
         
         villages[0].GetComponent<VillageScript>().liege = lord0;
+        lord0Script.villages.Add(villages[0]);
         villages[1].GetComponent<VillageScript>().liege = lord0;
+        lord0Script.villages.Add(villages[1]);
         villages[2].GetComponent<VillageScript>().liege = lord0;
+        lord0Script.villages.Add(villages[2]);
         villages[3].GetComponent<VillageScript>().liege = lord0;
+        lord0Script.villages.Add(villages[3]);
         villages[4].GetComponent<VillageScript>().liege = lord1;
+        lord1Script.villages.Add(villages[4]);
         villages[5].GetComponent<VillageScript>().liege = lord1;
+        lord1Script.villages.Add(villages[5]);
         villages[6].GetComponent<VillageScript>().liege = lord1;
+        lord1Script.villages.Add(villages[6]);
         villages[7].GetComponent<VillageScript>().liege = lord2;
+        lord2Script.villages.Add(villages[7]);
         villages[8].GetComponent<VillageScript>().liege = lord2;
+        lord2Script.villages.Add(villages[8]);
         villages[9].GetComponent<VillageScript>().liege = lord2;
+        lord2Script.villages.Add(villages[9]);
         villages[10].GetComponent<VillageScript>().liege = lord3;
+        lord3Script.villages.Add(villages[10]);
         villages[11].GetComponent<VillageScript>().liege = lord3;
+        lord3Script.villages.Add(villages[11]);
         villages[12].GetComponent<VillageScript>().liege = lord3;
+        lord3Script.villages.Add(villages[12]);
         villages[13].GetComponent<VillageScript>().liege = lord4;
+        lord4Script.villages.Add(villages[13]);
         villages[14].GetComponent<VillageScript>().liege = lord4;
+        lord4Script.villages.Add(villages[14]);
         villages[15].GetComponent<VillageScript>().liege = lord4;
+        lord4Script.villages.Add(villages[15]);
         villages[16].GetComponent<VillageScript>().liege = lord5;
+        lord5Script.villages.Add(villages[16]);
         villages[17].GetComponent<VillageScript>().liege = lord5;
+        lord5Script.villages.Add(villages[17]);
         villages[18].GetComponent<VillageScript>().liege = lord5;
+        lord5Script.villages.Add(villages[18]);
         villages[19].GetComponent<VillageScript>().liege = lord5;
+        lord5Script.villages.Add(villages[19]);
 
         foreach (GameObject city in cityObjects)
         {
@@ -125,5 +159,9 @@ public class GameManager : MonoBehaviour
         lord4Script.cities.Add(cities[4]);
         cities[5].GetComponent<CityScript>().liege = lord5;
         lord5Script.cities.Add(cities[5]);
+        cities[6].GetComponent<CityScript>().liege = lord6;
+        lord6Script.cities.Add(cities[6]);
+        cities[7].GetComponent<CityScript>().liege = lord7;
+        lord7Script.cities.Add(cities[7]);
     }
 }

@@ -25,7 +25,6 @@ public class CameraControls : MonoBehaviour
 
         GetComponent<Camera>().orthographicSize = newSize;
 
-        // Move the camera if the mouse is near the edges of the screen
         Vector3 pos = transform.position;
         float mouseX = Input.mousePosition.x;
         float mouseY = Input.mousePosition.y;

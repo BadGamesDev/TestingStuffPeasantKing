@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -61,24 +62,29 @@ public class VillageScript : MonoBehaviour
         traderScript.homeVillage = gameObject;
         traderScript.destination = homeCity.transform.position;
 
-        foreach (Item item in inventory.items)
+        lock (inventory)
         {
-            if (item.quantity > 0)
+            List<Item> itemsCopy = new List<Item>(inventory.items);
+
+            foreach (Item item in inventory.items)
             {
-                if (item.name == "Wheat")
+                if (item.quantity > 0)
                 {
-                    int quantity = Mathf.Max(0, Random.Range(0, item.quantity - population * 60));
-                    if (quantity > 0)
+                    if (item.name == "Wheat")
                     {
+                        int quantity = Mathf.Max(0, Random.Range(0, item.quantity - population * 60));
+                        if (quantity > 0)
+                        {
+                            traderScript.inventory.AddItem(new Item { name = item.name, quantity = quantity, value = item.value });
+                            inventory.RemoveItem(new Item { name = item.name, quantity = quantity, value = item.value });
+                        }
+                    }
+                    else
+                    {
+                        int quantity = Random.Range(item.quantity / 2, item.quantity + 1);
                         traderScript.inventory.AddItem(new Item { name = item.name, quantity = quantity, value = item.value });
                         inventory.RemoveItem(new Item { name = item.name, quantity = quantity, value = item.value });
                     }
-                }
-                else
-                {
-                    int quantity = Random.Range(item.quantity / 2, item.quantity + 1);
-                    traderScript.inventory.AddItem(new Item { name = item.name, quantity = quantity, value = item.value });
-                    inventory.RemoveItem(new Item { name = item.name, quantity = quantity, value = item.value });
                 }
             }
         }
@@ -86,7 +92,10 @@ public class VillageScript : MonoBehaviour
     
     public void ConsumeFood()
     {
-        inventory.RemoveItem(new Item { name = "Wheat", quantity = population, value = 10 });
+        lock (inventory)
+        {
+            inventory.RemoveItem(new Item { name = "Wheat", quantity = population, value = 10 });
+        }
     }
     
     public void PayTaxes()

@@ -6,8 +6,10 @@ using TMPro;
 public class LordScript : MonoBehaviour
 {
     public InventoryScript inventory;
+    public PartyScript party;
 
     public TMP_Text nameText;
+    public TMP_Text partySizeText;
 
     public List<GameObject> villages = new List<GameObject>();
     public List<GameObject> cities = new List<GameObject>();
@@ -23,6 +25,7 @@ public class LordScript : MonoBehaviour
     private void Start()
     {
         nameText.text = lordName;
+        partySizeText.text = party.partySize.ToString();
         inventory.money += 150000;
         taxRate = 40000;
         TimeManager.yearTickSend += OnYearTick;
