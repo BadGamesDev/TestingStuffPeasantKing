@@ -87,11 +87,30 @@ public class GameManager : MonoBehaviour
         lord0Script.allegiance = "Blue";
         lord1Script.allegiance = "Blue";
         lord2Script.allegiance = "Blue";
+        
         lord3Script.allegiance = "Red";
         lord4Script.allegiance = "Red";
         lord5Script.allegiance = "Red";
+        
         lord6Script.allegiance = "Blue";
         lord7Script.allegiance = "Red";
+
+        lord6Script.vassals.Add(lord0);
+        lord0Script.liege = lord7;
+        lord6Script.vassals.Add(lord1);
+        lord1Script.liege = lord7;
+        lord6Script.vassals.Add(lord2);
+        lord2Script.liege = lord7;
+        
+        lord7Script.vassals.Add(lord3);
+        lord3Script.liege = lord6;
+        lord7Script.vassals.Add(lord4);
+        lord4Script.liege = lord6;
+        lord7Script.vassals.Add(lord5);
+        lord5Script.liege = lord6;
+        
+        lord6Script.liege = null;
+        lord7Script.liege = null;
 
 
 

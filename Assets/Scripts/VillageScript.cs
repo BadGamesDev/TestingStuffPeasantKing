@@ -21,6 +21,7 @@ public class VillageScript : MonoBehaviour
     private void Start()
     {
         TimeManager.dayTickSend += OnDayTick;
+        TimeManager.weekTickSend += OnWeekTick;
         TimeManager.monthTickSend += OnMonthTick;
         TimeManager.yearTickSend += OnYearTick;
 
@@ -39,15 +40,17 @@ public class VillageScript : MonoBehaviour
         ConsumeFood();
     }
 
-    private void OnMonthTick()
+    private void OnWeekTick()
     {
-        inventory.AddItem(new Item { name = "Wheat", quantity = wheatProduction, value = 10});
-        inventory.AddItem(new Item { name = "Wood", quantity = woodProduction, value = 30});
-
         if (inventory.GetTotalValue() >= 100000)
         {
             SendTrader();
         }
+    }
+    private void OnMonthTick()
+    {
+        inventory.AddItem(new Item { name = "Wheat", quantity = wheatProduction, value = 10});
+        inventory.AddItem(new Item { name = "Wood", quantity = woodProduction, value = 30});
     }
     
     private void OnYearTick()

@@ -14,6 +14,7 @@ public class LordScript : MonoBehaviour
 
     public List<GameObject> villages = new List<GameObject>();
     public List<GameObject> cities = new List<GameObject>();
+    public List<GameObject> vassals = new List<GameObject>();
 
     public string lordName;
     public string rank;

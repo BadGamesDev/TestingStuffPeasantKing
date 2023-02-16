@@ -133,7 +133,7 @@ PrefabInstance:
     - target: {fileID: 8380614619613488280, guid: d08c0dbd596860e46aa3848469ae6c39, type: 3}
       propertyPath: liege
       value: 
-      objectReference: {fileID: 1921385432}
+      objectReference: {fileID: 0}
     - target: {fileID: 8380614619613488280, guid: d08c0dbd596860e46aa3848469ae6c39, type: 3}
       propertyPath: inventory
       value: 
@@ -207,7 +207,7 @@ PrefabInstance:
     - target: {fileID: 8380614619613488280, guid: d08c0dbd596860e46aa3848469ae6c39, type: 3}
       propertyPath: liege
       value: 
-      objectReference: {fileID: 1921385432}
+      objectReference: {fileID: 0}
     - target: {fileID: 8380614619613488280, guid: d08c0dbd596860e46aa3848469ae6c39, type: 3}
       propertyPath: inventory
       value: 
@@ -433,7 +433,7 @@ PrefabInstance:
     - target: {fileID: 8380614619613488280, guid: d08c0dbd596860e46aa3848469ae6c39, type: 3}
       propertyPath: liege
       value: 
-      objectReference: {fileID: 1921385432}
+      objectReference: {fileID: 0}
     - target: {fileID: 8380614619613488280, guid: d08c0dbd596860e46aa3848469ae6c39, type: 3}
       propertyPath: inventory
       value: 
@@ -1345,7 +1345,7 @@ PrefabInstance:
     - target: {fileID: 8380614619613488280, guid: d08c0dbd596860e46aa3848469ae6c39, type: 3}
       propertyPath: liege
       value: 
-      objectReference: {fileID: 983512677}
+      objectReference: {fileID: 0}
     - target: {fileID: 8380614619613488280, guid: d08c0dbd596860e46aa3848469ae6c39, type: 3}
       propertyPath: inventory
       value: 
@@ -1497,7 +1497,7 @@ PrefabInstance:
     - target: {fileID: 8380614619613488280, guid: d08c0dbd596860e46aa3848469ae6c39, type: 3}
       propertyPath: liege
       value: 
-      objectReference: {fileID: 983512677}
+      objectReference: {fileID: 0}
     - target: {fileID: 8380614619613488280, guid: d08c0dbd596860e46aa3848469ae6c39, type: 3}
       propertyPath: inventory
       value: 
@@ -2560,7 +2560,7 @@ PrefabInstance:
     - target: {fileID: 8380614619613488280, guid: d08c0dbd596860e46aa3848469ae6c39, type: 3}
       propertyPath: liege
       value: 
-      objectReference: {fileID: 983512677}
+      objectReference: {fileID: 0}
     - target: {fileID: 8380614619613488280, guid: d08c0dbd596860e46aa3848469ae6c39, type: 3}
       propertyPath: inventory
       value: 
@@ -2985,17 +2985,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8380614619613488281, guid: d08c0dbd596860e46aa3848469ae6c39, type: 3}
   m_PrefabInstance: {fileID: 1921385430}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1921385432 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8380614619613488287, guid: d08c0dbd596860e46aa3848469ae6c39, type: 3}
-  m_PrefabInstance: {fileID: 1921385430}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1921385433 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8380614619613488283, guid: d08c0dbd596860e46aa3848469ae6c39, type: 3}
   m_PrefabInstance: {fileID: 1921385430}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1921385432}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff2d9791e7bc4cb4da48a22566fec7db, type: 3}
@@ -3096,6 +3091,7 @@ MonoBehaviour:
   lord5Script: {fileID: 0}
   lord6Script: {fileID: 0}
   lord7Script: {fileID: 0}
+  pawnID: 0
 --- !u!4 &2023784632 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4304631837946828982, guid: 0933bfc7ade905445855df02602fb162, type: 3}

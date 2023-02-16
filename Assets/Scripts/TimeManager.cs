@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
+    //public delegate void OnHourTick();
+    //public static event OnHourTick hourTickSend;
+
     public delegate void OnDayTick();
     public static event OnDayTick dayTickSend;
+
+    public delegate void OnWeekTick();
+    public static event OnWeekTick weekTickSend;
 
     public delegate void OnMonthTick();
     public static event OnMonthTick monthTickSend;
@@ -15,6 +21,7 @@ public class TimeManager : MonoBehaviour
 
     public int hour;
     public int day;
+    public int weekDay;
     public int month;
     public int year;
 
@@ -28,6 +35,7 @@ public class TimeManager : MonoBehaviour
     {
         hour = 0;
         day = 1;
+        weekDay = 1;
         month = 1;
         year = 1180;
 
@@ -41,25 +49,25 @@ public class TimeManager : MonoBehaviour
         while (timeSinceTick >= 1f)
         {
             timeSinceTick -= 1f;
-            hourTick();
+            HourTick();
         }
     }
 
-    public void hourTick()
+    public void HourTick()
     {
         hour += 1;
 
         if (hour >= 24)
         {
-            dayTick();
+            DayTick();
         }
     }
 
-    public void dayTick()
+    public void DayTick()
     {
         hour = 0;
         day += 1;
-
+        weekDay++;
         int maxDays = daysPerMonth[month - 1];
 
         if (month == 2 && year % 4 == 0)
@@ -69,26 +77,37 @@ public class TimeManager : MonoBehaviour
 
         if (day > maxDays)
         {
-            monthTick();
+            MonthTick();
+        }
+
+        if (weekDay > 6)
+        {
+            WeekTick();
         }
 
         dayTickSend?.Invoke();
     }
 
-    public void monthTick()
+    public void WeekTick()
+    {
+        weekDay = 1;
+        weekTickSend.Invoke();
+    }
+
+    public void MonthTick()
     {
         day = 1;
         month += 1;
 
         if (month > 12)
         {
-            yearTick();
+            YearTick();
         }
 
         monthTickSend?.Invoke();
     }
 
-    public void yearTick()
+    public void YearTick()
     {
         month = 1;
         year += 1;
