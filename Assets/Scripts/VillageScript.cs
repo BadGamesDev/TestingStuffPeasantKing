@@ -7,6 +7,7 @@ public class VillageScript : MonoBehaviour
     public InventoryScript inventory;
     
     public GameObject traderPrefab;
+    public GameObject recruitPartyPrefab;
     public GameObject homeCity;
     public GameObject liege;
     
@@ -123,4 +124,19 @@ public class VillageScript : MonoBehaviour
             inventory.money = 0;
         }
     }
+    
+    public void SendRecruits()
+    {
+        //FIND BETTER NAMES
+        int recruitCount = Random.Range(population / 20, population / 10);
+        population -= recruitCount;
+        GameObject recruitParty = Instantiate(recruitPartyPrefab, transform.position, transform.rotation);
+        RecruitScript recruitScript = recruitParty.GetComponent<RecruitScript>();
+        PartyScript recruitPartyScript = recruitParty.GetComponent<PartyScript>();
+        recruitScript.home = gameObject;
+        recruitScript.liege = liege;
+        recruitScript.destination = liege.transform.position;
+        recruitPartyScript.AddPawn(recruitCount);
+    }
 }
+

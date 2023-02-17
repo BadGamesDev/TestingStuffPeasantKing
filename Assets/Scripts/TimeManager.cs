@@ -91,7 +91,7 @@ public class TimeManager : MonoBehaviour
     public void WeekTick()
     {
         weekDay = 1;
-        weekTickSend.Invoke();
+        weekTickSend?.Invoke();
     }
 
     public void MonthTick()

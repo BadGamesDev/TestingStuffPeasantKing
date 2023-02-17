@@ -11,28 +11,30 @@ public class PartyScript : MonoBehaviour
     public int partySize;
     public int partySpeed;
 
-    void Start()
+    void Awake()
     {
         partySize = 0;
         party = new List<Pawn>();
-        
-        for (int i = 0; i < 10; i++)
-        {
-            AddPawn();
-        }
     }
-    public void AddPawn()
+    
+    public void AddPawn(int numberOfPawnsToAdd)
     {
         GameManager gameManager = GameManager.Instance;
-        gameManager.pawnID++;
-        Pawn newSoldier = new Pawn();
-        newSoldier.ID = gameManager.pawnID;
-        newSoldier.name = "Soldier";
-        newSoldier.experience = Random.Range(0, 81);
-        newSoldier.talent = Random.Range(2, 7);
-        party.Add(newSoldier);
-        partySize++;
-        partySizeText.text = partySize.ToString();
+
+        for (int i = 0; i < numberOfPawnsToAdd; i++)
+        {
+            gameManager.pawnID++;
+            
+            Pawn newSoldier = new Pawn();
+            newSoldier.ID = gameManager.pawnID;
+            newSoldier.name = "Soldier";
+            newSoldier.experience = Random.Range(0, 41);
+            newSoldier.talent = Random.Range(2, 7);
+            
+            party.Add(newSoldier);
+            partySize++;
+            partySizeText.text = partySize.ToString();
+        }
     }
 }
 
@@ -40,6 +42,7 @@ public class PartyScript : MonoBehaviour
 public class Pawn
 {
     public int ID;
+    public int home;
     public string name;
     public int experience;
     public int talent;

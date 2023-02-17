@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public GameObject lord5;
     public GameObject lord6;
     public GameObject lord7;
+    public GameObject lord8;
+    public GameObject lord9;
 
     public LordScript lord0Script;
     public LordScript lord1Script;
@@ -26,6 +28,8 @@ public class GameManager : MonoBehaviour
     public LordScript lord5Script;
     public LordScript lord6Script;
     public LordScript lord7Script;
+    public LordScript lord8Script;
+    public LordScript lord9Script;
 
     public int pawnID;
 
@@ -54,6 +58,8 @@ public class GameManager : MonoBehaviour
         lord5 = GameObject.Find("Lord5");
         lord6 = GameObject.Find("Lord6");
         lord7 = GameObject.Find("Lord7");
+        lord8 = GameObject.Find("Lord8");
+        lord9 = GameObject.Find("Lord9");
 
         lord0Script = lord0.GetComponent<LordScript>();
         lord1Script = lord1.GetComponent<LordScript>();
@@ -63,6 +69,8 @@ public class GameManager : MonoBehaviour
         lord5Script = lord5.GetComponent<LordScript>();
         lord6Script = lord6.GetComponent<LordScript>();
         lord7Script = lord7.GetComponent<LordScript>();
+        lord8Script = lord8.GetComponent<LordScript>();
+        lord9Script = lord9.GetComponent<LordScript>();
 
         lord0Script.lordName = "Doge";
         lord1Script.lordName = "Cheems";
@@ -74,6 +82,9 @@ public class GameManager : MonoBehaviour
         lord6Script.lordName = "Franku";
         lord7Script.lordName = "Chinchin";
 
+        lord8Script.lordName = "BlueKing";
+        lord9Script.lordName = "RedKing";
+
         lord0Script.rank = "Count";
         lord1Script.rank = "Count";
         lord2Script.rank = "Count";
@@ -83,6 +94,9 @@ public class GameManager : MonoBehaviour
         
         lord6Script.rank = "Duke";
         lord7Script.rank = "Duke";
+
+        lord8Script.rank = "King";
+        lord9Script.rank = "King";
 
         lord0Script.allegiance = "Blue";
         lord1Script.allegiance = "Blue";
@@ -94,6 +108,9 @@ public class GameManager : MonoBehaviour
         
         lord6Script.allegiance = "Blue";
         lord7Script.allegiance = "Red";
+
+        lord8Script.allegiance = "Blue";
+        lord9Script.allegiance = "Red";
 
         lord6Script.vassals.Add(lord0);
         lord0Script.liege = lord7;
@@ -108,9 +125,14 @@ public class GameManager : MonoBehaviour
         lord4Script.liege = lord6;
         lord7Script.vassals.Add(lord5);
         lord5Script.liege = lord6;
-        
-        lord6Script.liege = null;
-        lord7Script.liege = null;
+
+        lord8Script.vassals.Add(lord6);
+        lord6Script.liege = lord8;
+        lord9Script.vassals.Add(lord7);
+        lord7Script.liege = lord9;
+
+        lord8Script.liege = null;
+        lord9Script.liege = null;
 
 
 
@@ -152,8 +174,8 @@ public class GameManager : MonoBehaviour
         lord4Script.villages.Add(villages[14]);
         villages[15].GetComponent<VillageScript>().liege = lord4;
         lord4Script.villages.Add(villages[15]);
-        villages[16].GetComponent<VillageScript>().liege = lord5;
-        lord5Script.villages.Add(villages[16]);
+        villages[16].GetComponent<VillageScript>().liege = lord4;
+        lord4Script.villages.Add(villages[16]);
         villages[17].GetComponent<VillageScript>().liege = lord5;
         lord5Script.villages.Add(villages[17]);
         villages[18].GetComponent<VillageScript>().liege = lord5;
@@ -178,9 +200,13 @@ public class GameManager : MonoBehaviour
         lord4Script.cities.Add(cities[4]);
         cities[5].GetComponent<CityScript>().liege = lord5;
         lord5Script.cities.Add(cities[5]);
-        cities[6].GetComponent<CityScript>().liege = lord6;
-        lord6Script.cities.Add(cities[6]);
-        cities[7].GetComponent<CityScript>().liege = lord7;
-        lord7Script.cities.Add(cities[7]);
+        cities[7].GetComponent<CityScript>().liege = lord6;
+        lord6Script.cities.Add(cities[7]);
+        cities[6].GetComponent<CityScript>().liege = lord7;
+        lord7Script.cities.Add(cities[6]);
+        cities[9].GetComponent<CityScript>().liege = lord8;
+        lord9Script.cities.Add(cities[9]);
+        cities[8].GetComponent<CityScript>().liege = lord9;
+        lord8Script.cities.Add(cities[8]);
     }
 }

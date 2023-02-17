@@ -114,9 +114,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 2164196838181764106}
   traderPrefab: {fileID: 2182082398061425284, guid: 118d78d81b238804dbe40ed5ad4c3755, type: 3}
+  recruitPartyPrefab: {fileID: 787377483154638740, guid: e710286a577dfa648af2eb192310bc7a, type: 3}
   homeCity: {fileID: 0}
-  lord: {fileID: 0}
+  liege: {fileID: 0}
   population: 0
   taxRate: 0
+  debt: 0
   wheatProduction: 0
   woodProduction: 0

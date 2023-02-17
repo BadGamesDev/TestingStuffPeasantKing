@@ -38,6 +38,7 @@ public class LordScript : MonoBehaviour
     {
         desiredPartySize = 10 + cities.Count * 20 + villages.Count * 10; //THIS IS A TEMPORARY SOLUTION! WILL BE CHANGED!
     }
+    
     private void OnYearTick()
     {
         PayTaxes();
