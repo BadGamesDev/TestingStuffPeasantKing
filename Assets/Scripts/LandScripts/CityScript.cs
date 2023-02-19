@@ -5,5 +5,7 @@ using UnityEngine;
 public class CityScript : MonoBehaviour
 {
     public InventoryScript inventory;
+
+    public GameObject homeCounty;
     public GameObject liege;
 }

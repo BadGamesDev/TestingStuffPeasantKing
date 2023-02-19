@@ -8,6 +8,9 @@ public class VillageScript : MonoBehaviour
     
     public GameObject traderPrefab;
     public GameObject recruitPartyPrefab;
+
+    public string county;
+    public GameObject homeCounty;
     public GameObject homeCity;
     public GameObject liege;
     
@@ -43,7 +46,7 @@ public class VillageScript : MonoBehaviour
 
     private void OnWeekTick()
     {
-        if (inventory.GetTotalValue() >= 100000)
+        if (inventory.GetTotalValue() >= 200000)
         {
             SendTrader();
         }

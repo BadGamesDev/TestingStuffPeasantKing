@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Village
   - City
+  - County
+  - Duchy
+  - Kingdom
   layers:
   - Default
   - TransparentFX
